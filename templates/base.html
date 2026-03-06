@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Seed Germination AI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #1f4037, #99f2c8);
+            min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .card-custom {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        .navbar {
+            background: rgba(0,0,0,0.6);
+        }
+
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+
+        .legend-box {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="/">🌱 Seed AI</a>
+    <div>
+      <a class="nav-link d-inline" href="/">Home</a>
+      <a class="nav-link d-inline" href="/about">About</a>
+      <a class="nav-link d-inline" href="/contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container py-5">
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

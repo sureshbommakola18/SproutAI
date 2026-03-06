@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card card-custom p-4 mb-4">
+    <h3 class="text-center mb-3">Seed Germination Detection System</h3>
+
+    <form action="/analyze" method="POST" enctype="multipart/form-data">
+        <div class="row g-3">
+            <div class="col-md-9">
+                <input class="form-control form-control-lg" type="file" name="image" required>
+            </div>
+            <div class="col-md-3 d-grid">
+                <button class="btn btn-success btn-lg">Analyze Image</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% if original_image %}
+
+<div class="row g-4">
+
+    <!-- Original Image -->
+    <div class="col-md-6">
+        <div class="card card-custom p-3">
+            <h5>Original Image</h5>
+            <img src="{{ original_image }}" class="img-fluid rounded">
+        </div>
+    </div>
+
+    <!-- Predicted Image -->
+    <div class="col-md-6">
+        <div class="card card-custom p-3">
+            <h5>Predicted Image</h5>
+            <img src="{{ result_image }}" class="img-fluid rounded">
+        </div>
+    </div>
+
+</div>
+
+<div class="row mt-4">
+
+    <div class="col-md-4">
+        <div class="card card-custom p-3 text-center">
+            <h4>{{ germinated + nongerminated }}</h4>
+            <p>Total Seeds</p>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card card-custom p-3 text-center text-success">
+            <h4>{{ germinated }}</h4>
+            <p>Germinated</p>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card card-custom p-3 text-center text-danger">
+            <h4>{{ nongerminated }}</h4>
+            <p>Non-Germinated</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="card card-custom p-4 mt-4">
+    <h5>Germination Rate</h5>
+    <h3>{{ percentage }}%</h3>
+    <div class="progress">
+        <div class="progress-bar bg-success"
+             style="width: {{ percentage }}%">
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+<!-- Legend -->
+<div class="card card-custom p-4 mt-4">
+    <h5>Legend</h5>
+    <p>
+        <span class="legend-box" style="background-color: rgb(34,139,34);"></span>
+        Germinated
+    </p>
+    <p>
+        <span class="legend-box" style="background-color: rgb(200,40,40);"></span>
+        Non-Germinated
+    </p>
+</div>
+
+<!-- Camera Section -->
+<div class="card card-custom p-4 mt-4 text-center">
+    <h5>Live Camera Classification</h5>
+    <img src="/video_feed" width="100%" class="rounded">
+</div>
+
+{% endblock %}
